@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cipher Tools</title>
+    <meta name="theme-color" content="#563d7c">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script>if (typeof module === 'object') {window.module = module;module = undefined;}</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/js/bootstrap.min.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
+    <script src="assets/js/main.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4"> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <div class="collapse navbar-collapse" id="navbar"> <ul class="navbar-nav mr-auto" id="hidden-nav"> <li class="nav-item"> <a class="nav-link" href="index.html">Home</a> </li><li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tools</a> <div class="dropdown-menu" aria-labelledby="dropdown"> <a class="dropdown-item" href="tools/frequency.html">Frequency Analysis</a> <a class="dropdown-item" href="tools/ioc.html">Index of Coincidences</a> </div></li><li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ciphers</a> <div class="dropdown-menu" aria-labelledby="dropdown"> <a class="dropdown-item" href="ciphers/vigenere.html">Vigenere</a></div></li></ul> <ul class="navbar-nav"> <li class="nav-item"> <a class="nav-link" href="#" id="minimise">🗕︎</a> </li><li class="nav-item"> <a class="nav-link disabled" href="#">🗖︎</a> </li><li class="nav-item"> <a class="nav-link" href="#" id="close">🗙︎</a> </li></ul> </div></nav>    <main role="main" class="container">
+        <form>
+            <div class="form-group">
+                <label for="ciphertext" class="text-light">Enter your ciphertext: </label>
+                <textarea class="form-control" id="ciphertext" rows="7"></textarea>
+            </div>
+            <button type="button" class="btn btn-success btn-block" id="submit">Go</button>
+        </form>
+        <div id="me" class="text-light">Sankarsh</div>
+    </main>
+</body>
+
+</html>

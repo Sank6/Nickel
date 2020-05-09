@@ -1,0 +1,11 @@
+{
+  "name": "cipher-tools",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^8.2.5"
+  }
+}

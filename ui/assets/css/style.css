@@ -1,0 +1,33 @@
+html, body {
+    background-color: #242424
+}
+
+#frequencies, #iocs {
+    width: calc(100vw - 100px) !important;
+    height: auto !important;
+    padding-left: 100px;
+}
+
+form {
+    margin-top: 150px;
+}
+
+textarea {
+    resize: none;
+}
+
+nav {
+    -webkit-app-region: drag;
+}
+
+nav li {
+    -webkit-app-region: no-drag !important;
+}
+
+#me  {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px 30px;
+    background-color: #343a40;
+}
