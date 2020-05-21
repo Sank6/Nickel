@@ -62,12 +62,12 @@ $(document).ready(() => {
         totalShift ++;
         chart.data.datasets[1].data = arrayRotate(f.map(x => x.actualFrequency.count), totalShift);
         chart.update();
-        $("#count").text(String(-totalShift) % 26)
+        $("#count").text(String(totalShift % 26))
     });
     $("#right").click(() => {
         totalShift --;
         chart.data.datasets[1].data = arrayRotate(f.map(x => x.actualFrequency.count), totalShift);
         chart.update();
-        $("#count").text(String(-totalShift) % 26)
+        $("#count").text(String(totalShift % 26))
     });
 })
