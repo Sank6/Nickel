@@ -1,5 +1,6 @@
 html, body {
-    background-color: #242424
+    background-color: #242424;
+    color: white;
 }
 
 #frequencies, #iocs {
@@ -18,6 +19,9 @@ textarea {
 
 nav {
     -webkit-app-region: drag;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 nav li {
@@ -30,4 +34,8 @@ nav li {
     left: 0;
     padding: 20px 30px;
     background-color: #343a40;
+}
+
+.text {
+    padding: 20px 50px;
 }

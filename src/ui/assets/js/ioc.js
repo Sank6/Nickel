@@ -7,11 +7,18 @@ $(document).ready(() => {
         type: 'line',
         data: {
             labels: i.map(x => x.columnCount),
-            datasets: [{
-                    label: 'IOC',
+            datasets: [
+                {
+                    label: 'Ciphertext IOC',
                     data: i.map(x => x.columnIOC.toFixed(4)),
                     borderWidth: 2,
                     borderColor: "rgba(15, 255, 183, 0.8)"
+                },
+                {
+                    label: 'English Language IOC',
+                    data: Array(i.length).fill(0.0667),
+                    borderWidth: 2,
+                    borderColor: "rgba(252, 182, 3, 0.8)"
                 },
             ]
         },
