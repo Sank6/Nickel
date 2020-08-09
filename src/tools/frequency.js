@@ -14,6 +14,7 @@ module.exports = (body) => {
             actualFrequency: {
                 count,
                 percent: (count / textLength) * 100,
+                // Difference between expected and actual frequency percentage
                 difference: Math.abs(((count / textLength) * 100) - englishLanguage[letter])
             },
             expectedFrequency: {

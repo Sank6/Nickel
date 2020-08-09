@@ -49,13 +49,19 @@ module.exports.decrypt = (key, body) => {
 
 module.exports.solve = (body) => {
     let shifts = []
+    
+    // Carry out each shift
     for (let shift = 1; shift < 25; shift ++) {
         let decrypted = module.exports.decrypt(shift, body);
         let freq = frequency(decrypted.plaintext);
+
+        // Add the differences between the actual frequency of the letter and the expected frequency
+        // of all the letters
         let sumDifferences = freq.map(x => x.actualFrequency.difference).reduce((a, b) => a + b);
         shifts.push(sumDifferences);
     }
-    let key = shifts.indexOf(Math.min(...shifts)) + 1;
 
+    // Return the shift with the lowest difference
+    let key = shifts.indexOf(Math.min(...shifts)) + 1;
     return key;
 }
