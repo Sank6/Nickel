@@ -2,7 +2,11 @@ const mean = require("../utils/mean.js");
 const getIOC = require("../utils/getIOC.js");
 const clean = require("../utils/clean.js");
 
-module.exports = (body, maxColumns = 20) => {
+const factors = number => Array
+    .from(Array(number + 1), (_, i) => i)
+    .filter(i => number % i === 0 && i !== 1);
+
+module.exports = (body, maxColumns = 30) => {
     body = clean(body);
     let returnData = []
 

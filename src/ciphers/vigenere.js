@@ -3,8 +3,26 @@ const alphabetUC = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ").split("");
 
 const ioc = require("../tools/ioc.js");
 
+Array.prototype.intersect = function(...a) {
+    return [this,...a].reduce((p,c) => p.filter(e => c.includes(e)));
+}
+
 module.exports.getKeyLength = (body) => {
-    return ioc(body).sort((a, b) => b.columnIOC - a.columnIOC)[0].columnCount
+    let ioc = ioc(body);
+
+    // Setup an object of all the potential factors
+    let factorStore = [];
+
+    // Find array intersections in the top 3 columnIOC
+    let selection = ioc.sort((a, b) => b.columnIOC - a.columnIOC).slice(0, 3).map(x => x.factors);
+    for (let columnCount of ioc) {
+        for (let f of columnCount.factors) {
+            factorStore.push(f);
+        }
+    }
+    let f = Math.max(...[...new Set(factorStore.intersect(...selection))]);
+
+    return f;
 }
 
 module.exports.encrypt = (key, body) => {
