@@ -26,7 +26,7 @@ module.exports = (body, maxColumns = 30) => {
             columnIOCArray.push(getIOC(column))
         }
 
-        returnData.push({columnCount: columns, columnIOC: mean(columnIOCArray)})
+        returnData.push({columnCount: columns, columnIOC: mean(columnIOCArray), factors: factors(columns)})
     }
     return returnData
 }
