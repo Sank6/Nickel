@@ -13,7 +13,8 @@ module.exports = (body) => {
             letter,
             actualFrequency: {
                 count,
-                percent: (count / textLength) * 100
+                percent: (count / textLength) * 100,
+                difference: Math.abs(((count / textLength) * 100) - englishLanguage[letter])
             },
             expectedFrequency: {
                 count: (englishLanguage[letter] / 100) * textLength,
