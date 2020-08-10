@@ -24,7 +24,7 @@ $(document).ready(() => {
                     borderColor: "rgba(214, 214, 214, 0.9)"
                 },
                 {
-                    label: 'Caeser Shifted',
+                    label: 'Caesar Shifted',
                     data: f.map(x => x.actualFrequency.count),
                     borderWidth: 1,
                     backgroundColor: "rgba(255, 54, 54, 0.5)",

@@ -1,6 +1,6 @@
 const alphabetLC = ("abcdefghijklmnopqrstuvwxyz").split("");
 const alphabetUC = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ").split("");
-const { solve } = require("./caeser.js");
+const { solve } = require("./caesar.js");
 
 const mode = require("../utils/mode.js");
 const ioc = require("../tools/ioc.js");
@@ -100,7 +100,7 @@ module.exports.solve = (body) => {
     // Select ever nth character from ciphertext
     let regex = new RegExp("(.)".repeat(keyLength), "g");
 
-    // Iterate over all the columns, and solve the caeser on each
+    // Iterate over all the columns, and solve the caesar on each
     let finalKey = "";
     for (let n = 0; n < keyLength; n ++) {
         let column = Array.from(body.matchAll(regex), m => m[n + 1]).join("");
