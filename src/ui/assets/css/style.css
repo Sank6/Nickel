@@ -156,9 +156,9 @@ h3:hover {
 #key-container {
   background-color: var(--primary);
   font-weight: 600;
-  width: calc(50% - 5px);
-  height: 60px;
-  margin:-10px -15px;
+  width: calc(50% - 4px);
+  height: 61px;
+  margin:-10.5px -15.5px;
   float: right;
   border-radius: 10px;
   padding: 5px 10px;
@@ -166,7 +166,6 @@ h3:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(1.05, 1.05);
   transition: 400ms ease all;
 }
 

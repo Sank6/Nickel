@@ -1,5 +1,7 @@
-# Cipher Tools
+# Nickel - Cipher Solver
 
- - Frequency analysis
- - Index of Coincidences (for various column lengths)
- - Vigenere decrypter
+![](screenshots/home.png)
+
+Currently supports:
+ - Caesar
+ - Vigenere
