@@ -1,16 +1,14 @@
-const { decrypt } = require("./vigenere");
-
 const alphabetLC = ("abcdefghijklmnopqrstuvwxyz").split("");
 const alphabetUC = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ").split("");
 const frequency = require("../tools/frequency.js");
 
 module.exports.encrypt = (key, body) => {
-    key = parseInt(key);
-    if (key === NaN && typeof key === "string") {
-        if (key.length > 1) return {success: false, error: "Invalid Key"};
-        key = alphabetUC.indexOf(key.toUpperCase());
-        if (key === -1) return { "error": "Invalid Key"};
-    }
+    if (isNaN(parseInt(key))) {
+        if (alphabetUC.includes(key.toUpperCase())) {
+            key = alphabetUC.indexOf(key.toUpperCase());
+        }
+        else return {success: false, error: "Invalid Key"};
+    } else key = parseInt(key)
 
     let ciphertext = "";
     for (let character of body) {
@@ -22,12 +20,12 @@ module.exports.encrypt = (key, body) => {
 }
 
 module.exports.decrypt = (key, body) => {
-    key = parseInt(key);
-    if (key === NaN && typeof key === "string") {
-        if (key.length > 1) return {success: false, error: "Invalid Key"};
-        key = alphabetUC.indexOf(key.toUpperCase());
-        if (key === -1) return { "error": "Invalid Key"};
-    }
+    if (isNaN(parseInt(key))) {
+        if (alphabetUC.includes(key.toUpperCase())) {
+            key = alphabetUC.indexOf(key.toUpperCase());
+        }
+        else return {success: false, error: "Invalid Key"};
+    } else key = parseInt(key)
 
     let plaintext = "";
     for (let character of body) {
@@ -63,5 +61,8 @@ module.exports.solve = (body) => {
 
     // Return the shift with the lowest difference
     let key = shifts.indexOf(Math.min(...shifts)) + 1;
-    return key;
+    
+    let {plaintext} = module.exports.decrypt(key, body);
+
+    return {success: true, plaintext, ciphertext: body, key}
 }

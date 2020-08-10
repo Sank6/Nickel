@@ -1,9 +1,8 @@
 const alphabetLC = ("abcdefghijklmnopqrstuvwxyz").split("");
 const alphabetUC = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ").split("");
 const { solve } = require("./caesar.js");
-
-const mode = require("../utils/mode.js");
 const ioc = require("../tools/ioc.js");
+const clean = require("../utils/clean.js");
 
 Array.prototype.intersect = function(...a) {
     return [this,...a].reduce((p,c) => p.filter(e => c.includes(e)));
@@ -22,7 +21,7 @@ module.exports.getKeyLength = (body) => {
             factorStore.push(f);
         }
     }
-    let f = mode(factorStore.intersect(...selection));
+    let f = Math.max(...[...new Set(factorStore.intersect(...selection))]);
 
     return f;
 }
@@ -53,7 +52,8 @@ module.exports.encrypt = (key, body) => {
             positionInBody ++;
         }
     }
-    return solved
+    if (body === solved) return {success: false, error: "Invalid Key"};
+    return {success: true, plaintext: body, ciphertext: solved}
 }
 
 module.exports.decrypt = (key, body) => {
@@ -86,16 +86,16 @@ module.exports.decrypt = (key, body) => {
             positionInBody ++;
         }
     }
-    return solved
+    if (body === solved) return {success: false, error: "Invalid Key"};
+    return {success: true, plaintext: solved, ciphertext: body}
 }
 
 module.exports.solve = (body) => {
-    let start = Date.now();
     let keyLength = module.exports.getKeyLength(body);
+    
+    if (!keyLength) return {success: false, error: "Unable to solve"}
 
-    // Size of Column (character count per column)
-    let i = Math.floor(body.length / keyLength);
-    let columnIOCArray = [];
+    let cleaned = clean(body);
 
     // Select ever nth character from ciphertext
     let regex = new RegExp("(.)".repeat(keyLength), "g");
@@ -103,10 +103,12 @@ module.exports.solve = (body) => {
     // Iterate over all the columns, and solve the caesar on each
     let finalKey = "";
     for (let n = 0; n < keyLength; n ++) {
-        let column = Array.from(body.matchAll(regex), m => m[n + 1]).join("");
-        let key = solve(column);
+        let column = Array.from(cleaned.matchAll(regex), m => m[n + 1]).join("");
+        let {key} = solve(column);
         finalKey = finalKey.concat(alphabetUC[key])
     }
 
-    return finalKey;
+    let {plaintext} = module.exports.decrypt(finalKey, body)
+
+    return {success: true, plaintext, ciphertext: body, key: finalKey}
 }
