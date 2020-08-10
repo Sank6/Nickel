@@ -2,6 +2,7 @@ const alphabetLC = ("abcdefghijklmnopqrstuvwxyz").split("");
 const alphabetUC = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ").split("");
 const { solve } = require("./caeser.js");
 
+const mode = require("../utils/mode.js");
 const ioc = require("../tools/ioc.js");
 
 Array.prototype.intersect = function(...a) {
@@ -21,7 +22,7 @@ module.exports.getKeyLength = (body) => {
             factorStore.push(f);
         }
     }
-    let f = Math.max(...[...new Set(factorStore.intersect(...selection))]);
+    let f = mode(factorStore.intersect(...selection));
 
     return f;
 }
