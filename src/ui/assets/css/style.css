@@ -15,6 +15,14 @@ body {
   color: var(--color);
   margin: 8px 15px;
   font-family: "Montserrat", sans-serif;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+a {
+  color: var(--color);
+  text-decoration: none;
 }
 
 /* Navbar Styling */
@@ -85,7 +93,7 @@ nav {
   transform: scale(1, 1);
 }
 
-/* General Styles */
+/* Homepage Styles */
 
 main {
     margin-top: 60px;
@@ -97,6 +105,7 @@ h1 {
 }
 
 .box {
+    display: block;
     background-color: var(--bg-2);
     border-radius: 10px;
     padding: 10px 15px;
@@ -178,7 +187,7 @@ h3:hover {
     display: none;
 }
 
-button {
+button:not(.btn) {
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid var(--color);
   border-radius: 10px;
@@ -191,12 +200,12 @@ button {
 }
 
 .btn-large {
-  width: calc(100%);
+  width: calc(100%) !important;
 }
 
-button:hover {
+button:not(.btn):hover {
   cursor: pointer;
-  transform: scale(1.1, 1.1);
+  transform: scale(1.05, 1.05);
   box-shadow: 0 0 5px var(--color);
 }
 
@@ -210,4 +219,80 @@ footer {
   bottom: 0;
   padding: 10px 5px;
   height: 20px;
+}
+
+/* Analysis Page Styles */
+
+.box-d {
+  width: 60%;
+  height: 40vh;
+  float: left;
+}
+
+.box-e {
+  background-color: initial;
+  width: calc(60% + 30px);
+  height: 20vh;
+  border-radius: 0;
+  padding: 0;
+  margin-top: 0;
+  border: 0;
+  float: left;
+}
+
+.box-e div {
+  background-color: var(--bg-2);
+  width: calc(50% - 35px);
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin: 10px 0;
+  height: 100px;
+  border: 0.5px solid var(--color);
+}
+
+.box-e-left {
+  float: left;
+}
+
+.box-e-right {
+  float: right;
+}
+
+.box-f {
+  width: 30%;
+  height: 20vh;
+  float: right;
+}
+
+.box-g {
+  width: 30%;
+  height: 222px;
+  float: right;
+}
+
+.selectable:hover {
+  cursor: pointer;
+}
+
+.modal {
+  max-width: 800px !important;
+  background: var(--background) !important;
+}
+
+.centered {
+  text-align: center;
+}
+
+.btn {
+  background-color: var(--background);
+  color: var(--color);
+  outline: none;
+  border: 1px solid var(--color);
+  padding: 5px 10px;
+  line-height: 15px;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  cursor: pointer;
 }
