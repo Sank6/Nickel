@@ -49,7 +49,7 @@ module.exports.solve = (body) => {
     let shifts = []
     
     // Carry out each shift
-    for (let shift = 1; shift < 25; shift ++) {
+    for (let shift = 0; shift < 25; shift ++) {
         let decrypted = module.exports.decrypt(shift, body);
         let freq = frequency(decrypted.plaintext);
 
@@ -60,7 +60,7 @@ module.exports.solve = (body) => {
     }
 
     // Return the shift with the lowest difference
-    let key = shifts.indexOf(Math.min(...shifts)) + 1;
+    let key = shifts.indexOf(Math.min(...shifts));
     
     let {plaintext} = module.exports.decrypt(key, body);
 
