@@ -1,4 +1,6 @@
 const { app, BrowserWindow } = require('electron');
+const path = require("path");
+const url = require("url");
 
 function createWindow () {
   let win = new BrowserWindow({
@@ -8,11 +10,14 @@ function createWindow () {
       nodeIntegration: true
     },
     frame: false,
-    resizable: false,
-    icon: "icon.png"
+    resizable: false
   })
   win.setMenuBarVisibility(false);
-  win.loadFile('ui/index.html');
+  win.loadURL(url.format({
+    pathname: path.join(__dirname, 'ui/index.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
 }
 
 app.whenReady().then(createWindow)
