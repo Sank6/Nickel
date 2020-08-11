@@ -1,11 +1,11 @@
 {
-  "name": "cipher-tools",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "nickel",
+  "version": "2.0.0",
+  "main": "src/index.js",
   "scripts": {
     "start": "electron src"
   },
   "devDependencies": {
-    "electron": "^8.2.5"
+    "electron": "^9.2.0"
   }
 }
