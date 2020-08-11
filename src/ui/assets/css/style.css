@@ -85,7 +85,7 @@ nav {
   transform: scaleX(0);
   transition: 400ms ease all;
 }
-.navbar-item > .navbar-item-link:hover:before {
+.navbar-item > .navbar-item-link:not(.window-btn):hover:before {
   visibility: visible;
   transform: scaleX(1);
 }
@@ -219,6 +219,14 @@ footer {
   bottom: 0;
   padding: 10px 5px;
   height: 20px;
+}
+
+.navbar-item .disabled {
+  color: var(--bg-2) !important;
+}
+
+.navbar-item .disabled:hover {
+  cursor: default;
 }
 
 /* Analysis Page Styles */
