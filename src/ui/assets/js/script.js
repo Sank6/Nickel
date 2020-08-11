@@ -1,3 +1,5 @@
+const shell = require('electron').shell;
+
 $(document).ready(() => {
     $("#key-container").click(() => {
         $("#key-container").text("")
@@ -18,4 +20,8 @@ $(document).ready(() => {
             e.currentTarget.children[1].style.display = "block";
         }
     })
+    $(document).on('click', 'a[href^="http"]', function(event) {
+        event.preventDefault();
+        shell.openExternal(this.href);
+    });
 })

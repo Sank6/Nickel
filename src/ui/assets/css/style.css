@@ -296,3 +296,8 @@ footer {
 .btn:hover {
   cursor: pointer;
 }
+
+.link {
+  text-decoration: underline;
+  font-weight: 600;
+}

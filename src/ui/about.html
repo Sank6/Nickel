@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nickel</title>
+    <meta name="theme-color" content="#563d7c">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>if (typeof module === 'object') {window.module = module;module = undefined;}</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
+    <script src="assets/js/functions.js"></script>
+    <script src="assets/js/script.js"></script>
+
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="navbar-item left">
+            <a class="navbar-item-link title" href="index.html">
+                Nickel
+            </a>
+        </div>
+        
+        <div class="navbar-item right">
+            <a class="navbar-item-link" href="#">
+                About
+            </a>
+        </div>
+        <div class="navbar-item right">
+            <a class="navbar-item-link " href="analysis.html">
+                Analysis
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <h1>About</h1>
+        <p>
+            Nickel is an open-sourced cipher tool to automate decryption of some ciphers, built on
+            <a href="https://www.electronjs.org/" class="link">Electron</a> and a some web-based
+            packages:
+            <a href="https://jquery.com/" class="link">jQuery</a>, 
+            <a href="https://fontawesome.com/" class="link">FontAwesome</a>, 
+            <a href="https://www.chartjs.org/" class="link">Chart.js</a>, 
+            <a href="https://ned.im/noty/" class="link">Noty</a>, 
+            <a href="https://jquerymodal.com/" class="link">jQuery Modal</a>, 
+            <a href="https://fonts.google.com/" class="link">Google Fonts</a>. The colour palette
+            is inspired from <a href="https://www.nordtheme.com/" class="link">Nord Theme</a>
+        </p>
+        <h2>Caesar</h2>
+        <p>
+            The Caesar auto solver uses a brute-force method as there are only 26 possibilities.
+            For every possible shift, the actual frequency of the letter is compared with the
+            expected frequency and then sum all the differences in these two percentages. The shift
+            with the smallest difference is assumed to be the "solution" and so the key is the shift.
+        </p>
+        <h2>Vigenere</h2>
+        <p>
+            The Vigenere auto solver has two steps. The first is to get the key length through the
+            <a href="https://en.wikipedia.org/wiki/Index_of_coincidence" class="link">Index of Coincidence</a>
+            method and comparing the factors of the columns with the top 3 index of coincidence.
+            To get the key, each column is treated as a separate Caesar cipher and the above method is
+            used to get each letter of the key.
+        </p>
+    </main>
+    <footer>Made by Sankarsh Makam</footer>
+</body>
+
+</html>
