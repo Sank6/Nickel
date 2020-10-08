@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Nickel</title>
     <meta name="theme-color" content="#563d7c">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <script>if (typeof module === 'object') {window.module = module;module = undefined;}</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -27,7 +27,7 @@
                 Nickel
             </a>
         </div>
-        
+
         <div class="navbar-item right">
             <a class="navbar-item-link window-btn" href="#" id="close">
                 🗙︎
@@ -62,11 +62,22 @@
         </div>
         <div class="box box-b">
             <h2 class="keyholder">Key</h2>
-            <div id="key-container" contenteditable="true">
-                A
+            <div id="key-container" contenteditable="true">A</div>
+        </div>
+        <div class="box box-c main">
+            <div class="buttons">
+                <button class="btn-large" onclick="caesar_page()">
+                    <i class="fas fa-circle-notch"></i>Caesar Shift
+                </button>
+                <button class="left" onclick="vigenere_page()">
+                    <i class="fas fa-stream"></i>Vigenere
+                </button>
+                <button class="right" onclick="beaufort_page()" disabled>
+                    <i class="fas fa-stream"></i>Beaufort
+                </button>
             </div>
         </div>
-        <div class="box box-c">
+        <div class="box box-c hidden caesar">
             <h3>Caesar Shift</h3>
             <div class="buttons">
                 <button class="left" onclick="caesar_decrypt()">
@@ -79,8 +90,11 @@
                     <i class="fas fa-magic"></i>Auto Solve
                 </button>
             </div>
+            <div class="back">
+                <i class="fas fa-chevron-left"></i>Back
+            </div>
         </div>
-        <div class="box box-c">
+        <div class="box box-c hidden vigenere">
             <h3>Vigenere</h3>
             <div class="buttons">
                 <button class="left" onclick="vigenere_decrypt()">
@@ -92,9 +106,15 @@
                 <button class="btn-large" onclick="vigenere_keylength()">
                     <i class="fas fa-key"></i>Get Key Length
                 </button>
-                <button class="btn-large" onclick="vigenere_solve()">
-                    <i class="fas fa-magic"></i>Auto Solve
+                <button class="left" onclick="vigenere_solve()">
+                    <i class="fas fa-magic"></i>Friedman
                 </button>
+                <button class="right" onclick="vigenere_solve()">
+                    <i class="fas fa-magic"></i>N-grams
+                </button>
+            </div>
+            <div class="back">
+                <i class="fas fa-chevron-left"></i>Back
             </div>
         </div>
     </main>

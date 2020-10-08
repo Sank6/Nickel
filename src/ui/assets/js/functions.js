@@ -20,8 +20,7 @@ let flash = () => {
     document.querySelector("#key-container").style.transform = "scale(1.15, 1.15)";
     document.querySelector("#key-container").style.backgroundColor = "var(--tertiary)";
     setTimeout(() => {
-        document.querySelector("#key-container").style.transform = "scale(1.05, 1.05)";
-        document.querySelector("#key-container").style.backgroundColor = "var(--primary)";
+        document.querySelector("#key-container").removeAttribute('style');
     }, 400)
 }
 
@@ -33,6 +32,16 @@ let time_taken = (start) => {
 }
 
 // Caesar
+
+let caesar_page = () => {
+    $(".box-c").hide();
+    $(".caesar").show();
+}
+
+let vigenere_page = () => {
+    $(".box-c").hide();
+    $(".vigenere").show();
+}
 
 let caesar_encrypt = () => {
     let start = Date.now();

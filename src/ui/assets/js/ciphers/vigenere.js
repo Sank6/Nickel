@@ -27,6 +27,7 @@ module.exports.getKeyLength = (body) => {
 }
 
 module.exports.encrypt = (key, body) => {
+    if (!key) return {success: false, error: "Invalid Key"};
     let converted = [];
     for (let i = 0; i < key.length; i++) {
         let k = key.charAt(i)
@@ -57,6 +58,7 @@ module.exports.encrypt = (key, body) => {
 }
 
 module.exports.decrypt = (key, body) => {
+    if (!key) return {success: false, error: "Invalid Key"};
     let converted = [];
     for (let i = 0; i < key.length; i++) {
         let k = key.charAt(i)
