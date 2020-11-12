@@ -67,7 +67,7 @@ $(document).ready(() => {
     });
 
     
-    $("#body").on('change keyup paste', function() {
+    $(".vigenere-body").on('change keyup paste', function() {
         let i = ioc(document.querySelector("#body").value);
         chart_small.data.datasets[0].data = i.map(x => x.columnIOC.toFixed(4))
         chart_small.update();

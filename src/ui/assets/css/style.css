@@ -16,8 +16,6 @@ body {
   margin: 8px 15px;
   font-family: "Montserrat", sans-serif;
   user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
 }
 
 a {
@@ -114,9 +112,9 @@ h1 {
 }
 
 .box-a {
-    width: 60%;
-    height: 60vh;
-    float: left;
+  width: 60%;
+  height: 40vh;
+  float: left;
 }
 
 .box-b {
@@ -126,10 +124,56 @@ h1 {
 }
 
 .box-c {
-    padding: 15px;
-    width: 30%;
-    height: 258px;
-    float: right;
+  width: 30%;
+  height: 148px;
+  float: right;
+}
+
+.box-d {
+  width: 30%;
+  height: 100px;
+  float: right;
+}
+
+.box-e {
+  background-color: initial;
+  width: calc(60% + 30px);
+  height: 20vh;
+  border-radius: 0;
+  padding: 0;
+  margin-top: 0;
+  border: 0;
+  float: left;
+}
+
+.box-e .box-e-left, .box-e .box-e-right {
+  background-color: var(--bg-2);
+  width: calc(50% - 35px);
+  border-radius: 10px;
+  padding: 10px 15px;
+  margin: 10px 0;
+  height: 100px;
+  border: 0.5px solid var(--color);
+}
+
+.box-e-left {
+  float: left;
+}
+
+.box-e-right {
+  float: right;
+}
+
+.box-f {
+  width: 30%;
+  height: 20vh;
+  float: right;
+}
+
+.box-g {
+  width: 30%;
+  height: 290px;
+  float: right;
 }
 
 .input {
@@ -186,6 +230,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: scale(1.1, 1.1);
   transition: 400ms ease all;
 }
 
@@ -216,6 +261,14 @@ button:not(.btn):hover {
   box-shadow: 0 0 5px var(--color);
 }
 
+.small {
+  max-width: 200px;
+  margin-bottom: 0 !important;
+  position: relative;
+  left: 20px;
+  bottom: 10px;
+}
+
 .fas {
   margin-right: 10px;
 }
@@ -237,53 +290,6 @@ footer {
 }
 
 /* Analysis Page Styles */
-
-.box-d {
-  width: 60%;
-  height: 40vh;
-  float: left;
-}
-
-.box-e {
-  background-color: initial;
-  width: calc(60% + 30px);
-  height: 20vh;
-  border-radius: 0;
-  padding: 0;
-  margin-top: 0;
-  border: 0;
-  float: left;
-}
-
-.box-e div {
-  background-color: var(--bg-2);
-  width: calc(50% - 35px);
-  border-radius: 10px;
-  padding: 10px 15px;
-  margin: 10px 0;
-  height: 100px;
-  border: 0.5px solid var(--color);
-}
-
-.box-e-left {
-  float: left;
-}
-
-.box-e-right {
-  float: right;
-}
-
-.box-f {
-  width: 30%;
-  height: 20vh;
-  float: right;
-}
-
-.box-g {
-  width: 30%;
-  height: 222px;
-  float: right;
-}
 
 .selectable:hover {
   cursor: pointer;
@@ -315,4 +321,48 @@ footer {
 .link {
   text-decoration: underline;
   font-weight: 600;
+}
+
+#cipher-list {
+  left: 30px;
+  position: absolute;
+  font-size: 0.6em;
+}
+
+#cipher-list div {
+  padding: 10px;
+  background-color: var(--background);
+  border-radius: 10px;
+}
+
+#cipher-list div:hover {
+  cursor: pointer;
+}
+
+.scroll-box {
+  width: 100% !important;
+  overflow-y: scroll;
+  height: inherit;
+  scroll-snap-align: start;
+  user-select: text !important;
+}
+
+::-webkit-scrollbar {
+  margin-right: 10px;
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 50px;
+  background: var(--color);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: var(--primary);
+  transition: background-color .8s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--background)
 }

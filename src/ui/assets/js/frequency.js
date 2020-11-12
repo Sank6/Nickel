@@ -89,7 +89,7 @@ $(document).ready(() => {
         }
     });
 
-    $("#body").on('change keyup paste', function() {
+    $(".caesar-body").on('change keyup paste', function() {
         let f = frequency(document.querySelector("#body").value);
         chart_small.data.datasets[0].data = f.map(x => x.actualFrequency.count)
         chart_small.data.datasets[1].data = f.map(x => x.expectedFrequency.count.toFixed(2))

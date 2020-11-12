@@ -33,16 +33,6 @@ let time_taken = (start) => {
 
 // Caesar
 
-let caesar_page = () => {
-    $(".box-c").hide();
-    $(".caesar").show();
-}
-
-let vigenere_page = () => {
-    $(".box-c").hide();
-    $(".vigenere").show();
-}
-
 let caesar_encrypt = () => {
     let start = Date.now();
     let key = document.querySelector("#key-container").innerText;

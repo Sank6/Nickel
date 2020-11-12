@@ -6,17 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Nickel</title>
     <meta name="theme-color" content="#563d7c">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="assets/css/style.css">
     <script>if (typeof module === 'object') {window.module = module;module = undefined;}</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css"/>
+
     <script>if (window.module) module = window.module;</script>
 
-    <script src="assets/js/functions.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/frequency.js"></script>
+    <script src="assets/js/iocs.js"></script>
+    <script src="assets/js/functions.js"></script>
+    <script src="assets/js/shannon.js"></script>
 
 </head>
 
@@ -27,7 +34,7 @@
                 Nickel
             </a>
         </div>
-
+        
         <div class="navbar-item right">
             <a class="navbar-item-link window-btn" href="#" id="close">
                 🗙︎
@@ -48,77 +55,100 @@
                 About
             </a>
         </div>
-        <div class="navbar-item right">
-            <a class="navbar-item-link " href="analysis.html">
-                Analysis
-            </a>
-        </div>
     </nav>
 
     <main>
-        <h1>Cipher Solver</h1>
-        <div class="box box-a">
-            <textarea class="input" id="body">Enter your text</textarea>
-        </div>
+        <h1>
+            <span id="cipher-selector">Caesar</span>
+            <button class="small" onclick="change()">
+                <i class="fas fa-random"></i>Change Cipher
+            </button>
+        </h1>
+
         <div class="box box-b">
             <h2 class="keyholder">Key</h2>
             <div id="key-container" contenteditable="true">A</div>
         </div>
-        <div class="box box-c main">
-            <div class="buttons">
-                <button class="btn-large" onclick="caesar_page()">
-                    <i class="fas fa-circle-notch"></i>Caesar Shift
-                </button>
-                <button class="left" onclick="vigenere_page()">
-                    <i class="fas fa-stream"></i>Vigenere
-                </button>
-                <button class="right" onclick="beaufort_page()" disabled>
-                    <i class="fas fa-stream"></i>Beaufort
-                </button>
+        <div id="caesar" class="cipher-shell">
+            <a class="box box-a selectable" href="#frequency_graph" rel="modal:open">
+                <h3>Frequency Distribution</h3>
+                <canvas id="frequencies_small" height="100"></canvas>
+            </a>
+            <a class="box box-c">
+                <textarea class="input body caesar-body" id="body">Enter your text</textarea>
+            </a>
+            <div class="box box-d">
+                <div class="buttons">
+                    <button class="left" onclick="caesar_decrypt()">
+                        <i class="fas fa-angle-left"></i>Decode
+                    </button>
+                    <button class="right" onclick="caesar_encrypt()">
+                        <i class="fas fa-angle-right"></i>Encode
+                    </button>
+                    <button class="btn-large" onclick="caesar_solve()">
+                        <i class="fas fa-magic"></i>Auto Solve
+                    </button>
+                </div>
+            </div>
+            <div class="box box-e">
+                <div class="box-e-left">
+                    <h3>Shannon Entropy</h3>
+                    <p class="shannon">0</p>
+                </div>
+                <div class="box-e-right">
+                    <div class="scroll-box">
+                        <h3>N-Grams</h3>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="box box-c hidden caesar">
-            <h3>Caesar Shift</h3>
-            <div class="buttons">
-                <button class="left" onclick="caesar_decrypt()">
-                    <i class="fas fa-angle-left"></i>Decode
-                </button>
-                <button class="right" onclick="caesar_encrypt()">
-                    <i class="fas fa-angle-right"></i>Encode
-                </button>
-                <button class="btn-large" onclick="caesar_solve()">
-                    <i class="fas fa-magic"></i>Auto Solve
-                </button>
+        
+        <div id="vigenere" class="cipher-shell hidden">
+            <a class="box box-a selectable" href="#ioc_graph" rel="modal:open">
+                <h3>Index of Coincidence</h3>
+                <canvas id="iocs_small" height="100"></canvas>
+            </a>
+            <a class="box box-c">
+                <textarea class="input body vigenere-body">Enter your text</textarea>
+            </a>
+            <div class="box box-d">
+                <div class="buttons">
+                    <button class="left" onclick="vigenere_decrypt()">
+                        <i class="fas fa-angle-left"></i>Decode
+                    </button>
+                    <button class="right" onclick="vigenere_encrypt()">
+                        <i class="fas fa-angle-right"></i>Encode
+                    </button>
+                    <button class="btn-large" onclick="vigenere_solve()">
+                        <i class="fas fa-magic"></i>Auto Solve
+                    </button>
+                </div>
             </div>
-            <div class="back">
-                <i class="fas fa-chevron-left"></i>Back
-            </div>
-        </div>
-        <div class="box box-c hidden vigenere">
-            <h3>Vigenere</h3>
-            <div class="buttons">
-                <button class="left" onclick="vigenere_decrypt()">
-                    <i class="fas fa-angle-left"></i>Decode
-                </button>
-                <button class="right" onclick="vigenere_encrypt()">
-                    <i class="fas fa-angle-right"></i>Encode
-                </button>
-                <button class="btn-large" onclick="vigenere_keylength()">
-                    <i class="fas fa-key"></i>Get Key Length
-                </button>
-                <button class="left" onclick="vigenere_solve()">
-                    <i class="fas fa-magic"></i>Friedman
-                </button>
-                <button class="right" onclick="vigenere_solve()">
-                    <i class="fas fa-magic"></i>N-grams
-                </button>
-            </div>
-            <div class="back">
-                <i class="fas fa-chevron-left"></i>Back
+            <div class="box box-e">
+                <div class="box-e-left">
+                    <h3>Shannon Entropy</h3>
+                    <p class="shannon">0</p>
+                </div>
+                <div class="box-e-right">
+                    <div class="scroll-box">
+                        <h3>N-Grams</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
     <footer></footer>
+    <div id="frequency_graph" class="modal">
+            <canvas id="frequencies" width="300"></canvas><br>
+            <div class="centered">
+                <button type="button" class="btn" id="left"> ⇦ </button>
+                <button type="button" class="btn disabled" id="count"> 0 </button>
+                <button type="button" class="btn" id="right"> ⇨ </button>
+            </div>
+    </div>
+    <div id="ioc_graph" class="modal">
+        <canvas id="iocs" width="300"></canvas>
+    </div>
 </body>
 
 </html>
