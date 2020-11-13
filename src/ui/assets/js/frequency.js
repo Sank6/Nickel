@@ -8,7 +8,7 @@ function arrayRotate(arr, count) {
 }
 
 $(document).ready(() => {
-    let f = frequency(document.querySelector("#body").value);
+    let f = frequency(document.querySelector("#caesar-body").value);
 
     let ctx = document.getElementById('frequencies_small').getContext('2d');
     let chart_small = new Chart(ctx, {
@@ -89,8 +89,8 @@ $(document).ready(() => {
         }
     });
 
-    $(".caesar-body").on('change keyup paste', function() {
-        let f = frequency(document.querySelector("#body").value);
+    $("#caesar-body").on('change keyup paste', function() {
+        let f = frequency($("#caesar-body").val());
         chart_small.data.datasets[0].data = f.map(x => x.actualFrequency.count)
         chart_small.data.datasets[1].data = f.map(x => x.expectedFrequency.count.toFixed(2))
         chart_small.update();
@@ -102,14 +102,14 @@ $(document).ready(() => {
     })
 
     $("#left").click(() => {
-        let f = frequency(document.querySelector("#body").value);
+        let f = frequency($("#caesar-body").val());
         totalShift ++;
         chart.data.datasets[1].data = arrayRotate(f.map(x => x.actualFrequency.count), totalShift);
         chart.update();
         $("#count").text(String(totalShift % 26))
     });
     $("#right").click(() => {
-        let f = frequency(document.querySelector("#body").value);
+        let f = frequency($("#caesar-body").val());
         totalShift --;
         chart.data.datasets[1].data = arrayRotate(f.map(x => x.actualFrequency.count), totalShift);
         chart.update();

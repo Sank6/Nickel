@@ -27,8 +27,6 @@ function change() {
     $("#cipher-selector").text(cipher)
     cipher = cipher.toLowerCase();
     $(".cipher-shell").hide()
-    $(".body").removeAttr('id');
-    $(`.${cipher}-body`).attr('id','body')
     $(`#${cipher}`).show()
 }
 

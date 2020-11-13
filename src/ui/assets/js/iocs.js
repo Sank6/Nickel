@@ -1,6 +1,6 @@
 const ioc = require("./assets/js/tools/ioc.js");
 $(document).ready(() => {
-    let i = ioc(document.querySelector("#body").value);
+    let i = ioc(document.querySelector("#vigenere-body").value);
 
     let ctx = document.getElementById('iocs_small').getContext('2d');
     let chart_small = new Chart(ctx, {
@@ -66,14 +66,15 @@ $(document).ready(() => {
         }
     });
 
-    
-    $(".vigenere-body").on('change keyup paste', function() {
-        let i = ioc(document.querySelector("#body").value);
+    function update() {
+        let i = ioc($("#vigenere-body").val());
         chart_small.data.datasets[0].data = i.map(x => x.columnIOC.toFixed(4))
         chart_small.update();
         
         chart.data.datasets[0].data = i.map(x => x.columnIOC.toFixed(4))
         chart.data.datasets[1].data = Array(i.length).fill(0.0667)
         chart.update();
-    })
+    }
+    $("#vigenere-body").on('change keyup paste', update)
+    $("button").on('click', update)
 })

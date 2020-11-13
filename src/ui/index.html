@@ -22,6 +22,7 @@
     <script src="assets/js/script.js"></script>
     <script src="assets/js/frequency.js"></script>
     <script src="assets/js/iocs.js"></script>
+    <script src="assets/js/ngrams.js"></script>
     <script src="assets/js/functions.js"></script>
     <script src="assets/js/shannon.js"></script>
 
@@ -64,18 +65,17 @@
                 <i class="fas fa-random"></i>Change Cipher
             </button>
         </h1>
-
-        <div class="box box-b">
-            <h2 class="keyholder">Key</h2>
-            <div id="key-container" contenteditable="true">A</div>
-        </div>
         <div id="caesar" class="cipher-shell">
             <a class="box box-a selectable" href="#frequency_graph" rel="modal:open">
                 <h3>Frequency Distribution</h3>
                 <canvas id="frequencies_small" height="100"></canvas>
             </a>
+            <div class="box box-b">
+                <h2 class="keyholder">Key</h2>
+                <div class="key" id="caesar-key" contenteditable="true">A</div>
+            </div>
             <a class="box box-c">
-                <textarea class="input body caesar-body" id="body">Enter your text</textarea>
+                <textarea class="input body" id="caesar-body">Enter your text</textarea>
             </a>
             <div class="box box-d">
                 <div class="buttons">
@@ -95,11 +95,12 @@
                     <h3>Shannon Entropy</h3>
                     <p class="shannon">0</p>
                 </div>
-                <div class="box-e-right">
+                <a class="box-e-right" href="#n_grams" rel="modal:open">
                     <div class="scroll-box">
-                        <h3>N-Grams</h3>
+                        <h3>Bigrams</h3>
+                        <p class="bigrams"></p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         
@@ -108,8 +109,12 @@
                 <h3>Index of Coincidence</h3>
                 <canvas id="iocs_small" height="100"></canvas>
             </a>
+            <div class="box box-b">
+                <h2 class="keyholder">Key</h2>
+                <div class="key" id="vigenere-key" contenteditable="true">Harry</div>
+            </div>
             <a class="box box-c">
-                <textarea class="input body vigenere-body">Enter your text</textarea>
+                <textarea class="input body" id="vigenere-body">Enter your text</textarea>
             </a>
             <div class="box box-d">
                 <div class="buttons">
@@ -129,25 +134,29 @@
                     <h3>Shannon Entropy</h3>
                     <p class="shannon">0</p>
                 </div>
-                <div class="box-e-right">
+                <a class="box-e-right" href="#n_grams" rel="modal:open">
                     <div class="scroll-box">
-                        <h3>N-Grams</h3>
+                        <h3>Bigrams</h3>
+                        <p class="bigrams"></p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </main>
     <footer></footer>
     <div id="frequency_graph" class="modal">
-            <canvas id="frequencies" width="300"></canvas><br>
-            <div class="centered">
-                <button type="button" class="btn" id="left"> ⇦ </button>
-                <button type="button" class="btn disabled" id="count"> 0 </button>
-                <button type="button" class="btn" id="right"> ⇨ </button>
-            </div>
+        <canvas id="frequencies" width="300"></canvas><br>
+        <div class="centered">
+            <button type="button" class="btn" id="left"> ⇦ </button>
+            <button type="button" class="btn disabled" id="count"> 0 </button>
+            <button type="button" class="btn" id="right"> ⇨ </button>
+        </div>
     </div>
     <div id="ioc_graph" class="modal">
         <canvas id="iocs" width="300"></canvas>
+    </div>
+    <div id="n_grams" class="modal">
+        <h1>N-Grams</h1>
     </div>
 </body>
 

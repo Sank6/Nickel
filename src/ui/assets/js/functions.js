@@ -2,11 +2,9 @@ const caesar = require("./assets/js/ciphers/caesar.js");
 const vigenere = require("./assets/js/ciphers/vigenere.js");
 
 let error = (e) => {
-    document.querySelector("#key-container").style.transform = "scale(1.15, 1.15)";
-    document.querySelector("#key-container").style.backgroundColor = "var(--secondary)";
+    $(".key").css({'transform': "scale(1.15, 1.15)", "background-color": "var(--secondary)"});
     setTimeout(() => {
-        document.querySelector("#key-container").style.transform = "scale(1.05, 1.05)";
-        document.querySelector("#key-container").style.backgroundColor = "var(--primary)";
+        $(".key").removeAttr("style");
     }, 400)
     new Noty({
         theme: "sunset",
@@ -17,10 +15,9 @@ let error = (e) => {
 }
 
 let flash = () => {
-    document.querySelector("#key-container").style.transform = "scale(1.15, 1.15)";
-    document.querySelector("#key-container").style.backgroundColor = "var(--tertiary)";
+    $(".key").css({'transform': "scale(1.15, 1.15)", "background-color": "var(--tertiary)"});
     setTimeout(() => {
-        document.querySelector("#key-container").removeAttribute('style');
+        $(".key").removeAttr("style");
     }, 400)
 }
 
@@ -35,8 +32,8 @@ let time_taken = (start) => {
 
 let caesar_encrypt = () => {
     let start = Date.now();
-    let key = document.querySelector("#key-container").innerText;
-    let body = document.querySelector("#body");
+    let key = document.querySelector("#caesar-key").innerText;
+    let body = document.querySelector("#caesar-body");
     let res = caesar.encrypt(key, body.value);
     if (!res.success) return error(res.error)
     body.value = res.ciphertext;
@@ -45,8 +42,8 @@ let caesar_encrypt = () => {
 
 let caesar_decrypt = () => {
     let start = Date.now();
-    let key = document.querySelector("#key-container").innerText;
-    let body = document.querySelector("#body");
+    let key = document.querySelector("#caesar-key").innerText;
+    let body = document.querySelector("#caesar-body");
     let res = caesar.decrypt(key, body.value);
     if (!res.success) return error(res.error)
     body.value = res.plaintext
@@ -55,10 +52,10 @@ let caesar_decrypt = () => {
 
 let caesar_solve = () => {
     let start = Date.now();
-    let body = document.querySelector("#body");
+    let body = document.querySelector("#caesar-body");
     let res = caesar.solve(body.value);
     if (!res.success) return error(res.error)
-    document.querySelector("#key-container").innerText = res.key;
+    document.querySelector("#caesar-key").innerText = res.key;
     flash()
     body.value = res.plaintext
     time_taken(start);
@@ -68,8 +65,8 @@ let caesar_solve = () => {
 
 let vigenere_encrypt = () => {
     let start = Date.now();
-    let key = document.querySelector("#key-container").innerText;
-    let body = document.querySelector("#body");
+    let key = document.querySelector("#vigenere-key").innerText;
+    let body = document.querySelector("#vigenere-body");
     let res = vigenere.encrypt(key, body.value);
     if (!res.success) return error(res.error)
     body.value = res.ciphertext
@@ -78,8 +75,8 @@ let vigenere_encrypt = () => {
 
 let vigenere_decrypt = () => {
     let start = Date.now();
-    let key = document.querySelector("#key-container").innerText;
-    let body = document.querySelector("#body");
+    let key = document.querySelector("#vigenere-key").innerText;
+    let body = document.querySelector("#vigenere-body");
     let res = vigenere.decrypt(key, body.value);
     if (!res.success) return error(res.error)
     body.value = res.plaintext
@@ -88,7 +85,7 @@ let vigenere_decrypt = () => {
 
 let vigenere_keylength = () => {
     let start = Date.now();
-    let body = document.querySelector("#body");
+    let body = document.querySelector("#vigenere-body");
     let res = vigenere.getKeyLength(body.value);
     new Noty({
         theme: "sunset",
@@ -101,10 +98,10 @@ let vigenere_keylength = () => {
 
 let vigenere_solve = () => {
     let start = Date.now();
-    let body = document.querySelector("#body");
+    let body = document.querySelector("#vigenere-body");
     let res = vigenere.solve(body.value);
     if (!res.success) return error(res.error);
-    document.querySelector("#key-container").innerText = res.key;
+    document.querySelector("#vigenere-key").innerText = res.key;
     flash()
     body.value = res.plaintext
     time_taken(start);

@@ -217,7 +217,7 @@ h3 {
   display: inline-block;
 }
 
-#key-container {
+.key {
   background-color: var(--primary);
   font-weight: 600;
   width: calc(50% - 4px);
@@ -234,7 +234,7 @@ h3 {
   transition: 400ms ease all;
 }
 
-#key-container:hover {
+.key:hover {
   cursor: pointer;
   transform: scale(1.15, 1.15);
 }
@@ -337,6 +337,10 @@ footer {
 
 #cipher-list div:hover {
   cursor: pointer;
+}
+
+.bigrams {
+  column-count: 3;
 }
 
 .scroll-box {

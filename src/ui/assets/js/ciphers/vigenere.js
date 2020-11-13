@@ -95,8 +95,7 @@ module.exports.decrypt = (key, body) => {
 module.exports.solve = (body) => {
     let keyLength = module.exports.getKeyLength(body);
     
-    if (!keyLength) return {success: false, error: "Unable to solve"}
-
+    if (!keyLength || isNaN(keyLength) || !isFinite(keyLength)) return {success: false, error: "Unable to solve"}
     let cleaned = clean(body);
 
     // Select ever nth character from ciphertext
