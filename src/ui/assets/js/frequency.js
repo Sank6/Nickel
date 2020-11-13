@@ -89,7 +89,7 @@ $(document).ready(() => {
         }
     });
 
-    $("#caesar-body").on('change keyup paste', function() {
+    function update() {
         let f = frequency($("#caesar-body").val());
         chart_small.data.datasets[0].data = f.map(x => x.actualFrequency.count)
         chart_small.data.datasets[1].data = f.map(x => x.expectedFrequency.count.toFixed(2))
@@ -99,7 +99,10 @@ $(document).ready(() => {
         chart.data.datasets[1].data = f.map(x => x.actualFrequency.count)
         chart.data.datasets[2].data = f.map(x => x.expectedFrequency.count.toFixed(2))
         chart.update();
-    })
+    }
+    
+    $("#caesar-body").on('change keyup paste', update)
+    $("button").on('click', update)
 
     $("#left").click(() => {
         let f = frequency($("#caesar-body").val());
