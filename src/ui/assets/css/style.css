@@ -339,9 +339,33 @@ footer {
   cursor: pointer;
 }
 
-.bigrams {
+.bigrams, .trigrams, .quadgrams{
   column-count: 3;
+  font-size: 0.8em;white-space: nowrap;
+  font-family: 'Roboto Mono', monospace;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  padding: 10px;
+}
+th {
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 2px solid var(--color);
+}
+td {
+  padding: 10px 20px;
+  vertical-align: top;
+}
+
+th, td {
+  border-right: 2px solid var(--color);
+}
+th:last-child, td:last-child { border-right: none; }
 
 .scroll-box {
   width: 100% !important;
@@ -349,6 +373,7 @@ footer {
   height: inherit;
   scroll-snap-align: start;
   user-select: text !important;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
