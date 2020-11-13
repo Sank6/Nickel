@@ -1,7 +1,7 @@
 # Nickel - Cipher Solver
 
-![](screenshots/home.png)
-![](screenshots/analysis.png)
+![](screenshots/caesar.png)
+![](screenshots/vigenere.png)
 ![](screenshots/popup.png)
 
 Currently supports:
