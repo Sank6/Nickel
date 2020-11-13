@@ -17,7 +17,11 @@ $(document).ready(() => {
         w.minimize();
     })
 
-    $('.scroll-box').bind("DOMMouseScroll mousewheel", wheel)
+    $('.scroll-box').hover(function() { 
+        $(this).addClass('hovered');
+      }, function() {
+        $(this).removeClass('hovered');
+      });
 })
 
 function change() {
@@ -49,7 +53,7 @@ function handle(delta) {
     var time = 600;
 	var distance = 100;
     
-    $('.scroll-box').stop().animate({
-        scrollTop: $(".scroll-box").scrollTop() - (distance * delta)
+    $('.hovered').stop().animate({
+        scrollTop: $(".hovered").scrollTop() - (distance * delta)
     }, time );
 }
