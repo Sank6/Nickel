@@ -10,7 +10,7 @@ function arrayRotate(arr, count) {
 $(document).ready(() => {
     let f = frequency(document.querySelector("#caesar-body").value);
 
-    let ctx = document.getElementById('frequencies_small').getContext('2d');
+    let ctx = document.getElementById('frequencies_small_caesar').getContext('2d');
     let chart_small = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -46,7 +46,7 @@ $(document).ready(() => {
         }
     });
 
-    ctx = document.getElementById('frequencies').getContext('2d');
+    ctx = document.getElementById('frequencies_caesar').getContext('2d');
     let chart = new Chart(ctx, {
         type: 'bar',
         data: {

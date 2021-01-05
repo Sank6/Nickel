@@ -376,6 +376,14 @@ th:last-child, td:last-child { border-right: none; }
   overflow-x: hidden;
 }
 
+.cipher-shell {
+  display: none;
+}
+
+#caesar {
+  display: block;
+}
+
 ::-webkit-scrollbar {
   margin-right: 10px;
   width: 7px;

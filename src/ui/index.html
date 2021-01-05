@@ -20,7 +20,8 @@
     <script>if (window.module) module = window.module;</script>
 
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/frequency.js"></script>
+    <script src="assets/js/frequency_caesar.js"></script>
+    <script src="assets/js/frequency_affine.js"></script>
     <script src="assets/js/iocs.js"></script>
     <script src="assets/js/ngrams.js"></script>
     <script src="assets/js/functions.js"></script>
@@ -66,9 +67,9 @@
             </button>
         </h1>
         <div id="caesar" class="cipher-shell">
-            <a class="box box-a selectable" href="#frequency_graph" rel="modal:open">
+            <a class="box box-a selectable" href="#frequency_graph_caesar" rel="modal:open">
                 <h3>Frequency Distribution</h3>
-                <canvas id="frequencies_small" height="100"></canvas>
+                <canvas id="frequencies_small_caesar" height="100"></canvas>
             </a>
             <div class="box box-b">
                 <h2 class="keyholder">Key</h2>
@@ -86,6 +87,45 @@
                         <i class="fas fa-angle-right"></i>Encode
                     </button>
                     <button class="btn-large" onclick="caesar_solve()">
+                        <i class="fas fa-magic"></i>Auto Solve
+                    </button>
+                </div>
+            </div>
+            <div class="box box-e">
+                <div class="box-e-left">
+                    <h3>Shannon Entropy</h3>
+                    <p class="shannon">0</p>
+                </div>
+                <a class="box-e-right" href="#n_grams" rel="modal:open">
+                    <div class="scroll-box">
+                        <h3>Bigrams</h3>
+                        <p class="bigrams"></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <div id="affine" class="cipher-shell">
+            <a class="box box-a selectable" href="#frequency_graph_affine" rel="modal:open">
+                <h3>Frequency Distribution</h3>
+                <canvas id="frequencies_small_affine" height="100"></canvas>
+            </a>
+            <div class="box box-b">
+                <h2 class="keyholder">Key</h2>
+                <div class="key" id="affine-key" contenteditable="true">3, 5</div>
+            </div>
+            <a class="box box-c">
+                <textarea class="input body" id="affine-body">Enter your text</textarea>
+            </a>
+            <div class="box box-d">
+                <div class="buttons">
+                    <button class="left" onclick="affine_decrypt()">
+                        <i class="fas fa-angle-left"></i>Decode
+                    </button>
+                    <button class="right" onclick="affine_encrypt()">
+                        <i class="fas fa-angle-right"></i>Encode
+                    </button>
+                    <button class="btn-large" onclick="affine_solve()">
                         <i class="fas fa-magic"></i>Auto Solve
                     </button>
                 </div>
@@ -144,8 +184,16 @@
         </div>
     </main>
     <footer></footer>
-    <div id="frequency_graph" class="modal">
-        <canvas id="frequencies" width="300"></canvas><br>
+    <div id="frequency_graph_caesar" class="modal">
+        <canvas id="frequencies_caesar" width="300"></canvas><br>
+        <div class="centered">
+            <button type="button" class="btn" id="left"> ⇦ </button>
+            <button type="button" class="btn disabled" id="count"> 0 </button>
+            <button type="button" class="btn" id="right"> ⇨ </button>
+        </div>
+    </div>
+    <div id="frequency_graph_affine" class="modal">
+        <canvas id="frequencies_affine" width="300"></canvas><br>
         <div class="centered">
             <button type="button" class="btn" id="left"> ⇦ </button>
             <button type="button" class="btn disabled" id="count"> 0 </button>

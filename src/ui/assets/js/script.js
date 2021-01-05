@@ -25,7 +25,7 @@ $(document).ready(() => {
 })
 
 function change() {
-    let ciphers = ["Caesar", "Vigenere"]
+    let ciphers = ["Caesar", "Affine", "Vigenere"]
     let index = (ciphers.indexOf($("#cipher-selector").text()) + 1) % ciphers.length
     let cipher = ciphers[index]
     $("#cipher-selector").text(cipher)

@@ -1,4 +1,5 @@
 const caesar = require("./assets/js/ciphers/caesar.js");
+const affine = require("./assets/js/ciphers/affine.js");
 const vigenere = require("./assets/js/ciphers/vigenere.js");
 
 let error = (e) => {
@@ -56,6 +57,41 @@ let caesar_solve = () => {
     let res = caesar.solve(body.value);
     if (!res.success) return error(res.error)
     document.querySelector("#caesar-key").innerText = res.key;
+    flash()
+    body.value = res.plaintext
+    time_taken(start);
+}
+
+// Affine
+
+let affine_encrypt = () => {
+    let start = Date.now();
+    let key = document.querySelector("#affine-key").innerText.split(", ");
+    key = {a: key[0], b: key[1]};
+    let body = document.querySelector("#affine-body");
+    let res = affine.encrypt(key, body.value);
+    if (!res.success) return error(res.error)
+    body.value = res.ciphertext;
+    time_taken(start);
+}
+
+let affine_decrypt = () => {
+    let start = Date.now();
+    let key = document.querySelector("#affine-key").innerText.split(", ");
+    key = {a: key[0], b: key[1]};
+    let body = document.querySelector("#affine-body");
+    let res = affine.decrypt(key, body.value);
+    if (!res.success) return error(res.error)
+    body.value = res.plaintext
+    time_taken(start);
+}
+
+let affine_solve = () => {
+    let start = Date.now();
+    let body = document.querySelector("#affine-body");
+    let res = affine.solve(body.value);
+    if (!res.success) return error(res.error)
+    document.querySelector("#affine-key").innerText = `${res.key["a"]}, ${res.key["b"]}`;
     flash()
     body.value = res.plaintext
     time_taken(start);
