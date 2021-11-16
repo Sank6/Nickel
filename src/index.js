@@ -2,12 +2,16 @@ const { app, BrowserWindow } = require('electron');
 const path = require("path");
 const url = require("url");
 
+require('@electron/remote/main').initialize()
+
+
 function createWindow () {
   let win = new BrowserWindow({
     width: 1000,
     height: 600,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false,
     },
     frame: false,
     resizable: false
@@ -18,6 +22,8 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }));
+  
+require("@electron/remote/main").enable(win.webContents)
 }
 
 app.whenReady().then(createWindow)

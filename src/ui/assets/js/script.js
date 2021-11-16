@@ -1,4 +1,5 @@
-const {shell, remote} = require('electron');
+const { shell } = require('electron');
+const { BrowserWindow } = require("@electron/remote")
 
 $(document).ready(() => {
     $("#key-container").click(() => {
@@ -9,11 +10,11 @@ $(document).ready(() => {
         shell.openExternal(this.href);
     });
     $("#close").click(() => {
-        let w = remote.getCurrentWindow();
+        let w = BrowserWindow.getFocusedWindow();
         w.close();
     })
     $("#minimise").click(() => {
-        let w = remote.getCurrentWindow();
+        let w = BrowserWindow.getFocusedWindow();
         w.minimize();
     })
 
