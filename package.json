@@ -10,6 +10,6 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "electron": "^16.0.0"
+    "electron": "^16.2.6"
   }
 }
